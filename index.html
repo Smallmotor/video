@@ -6,30 +6,48 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
         .a{
-            width: 320px;
+            width: 100%;
             height: 300px;
-            overflow: hidden;
             position: relative;
+            overflow: hidden;
             float: left;   
+        }
+        .b{
+            position: absolute;
         }
     </style>
 </head>
 <body>
+<div class="a" id="a">
+    <iframe id="b" class="b video_pc" src="https://www.bilibili.com/html/html5player.html?cid=24237876&aid=14875829&pre_ad=0" frameborder="0" allowfullscreen="true">
+    </iframe> 
+</div>
 
-    <div class="a" id="a">
-        <iframe id="b" class="b video_pc" src="https://www.bilibili.com/html/html5player.html?cid=24237876&aid=14875829&pre_ad=0" frameborder="0" allowfullscreen="true">
-        </iframe>     
-    </div>
-    <script>
-        var a = document.getElementById("a");
-        var b = document.getElementById("b");
-        b.style.width=a.offsetWidth+305+"px";
-        b.style.height=a.offsetHeight+88+"px";
-        b.style.position="absolute";
-        b.style.top=-47+"px";
-        b.style.left=-2+"px";
-    </script>
+            
+
+<script>
+    var a = document.getElementById("a");
+    var b = document.getElementById("b");
+    function ab (){
+        console.log(window.screen.width)
+        if(a.offsetWidth>480){
+            console.log(1)
+            b.style.width=a.offsetWidth+300+"px";
+            b.style.height=a.offsetHeight+85+"px";
+            b.style.top=-47+"px";
+        }else{
+            console.log(2)
+            b.style.width=100+"%";
+            b.style.height=b.offsetWidth*0.6+"px";  
+        }
+    }
+    ab();
+</script> 
     
 </body>
 </html>
