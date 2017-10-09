@@ -10,8 +10,14 @@
             margin: 0;
             padding: 0;
         }
+        li{
+            list-style: none;
+            height: 30px;
+            line-height: 30px;
+            border-bottom:1px solid #000; 
+        }
         .a{
-            width: 100%;
+            width: 60%;
             height: 300px;
             position: relative;
             overflow: hidden;
@@ -20,33 +26,66 @@
         .b{
             position: absolute;
         }
+        .dc{
+            width: 80%;
+            margin:100px auto 0;
+        }
+        .lis{
+            width: 30%;
+            float: right;
+        }
     </style>
 </head>
 <body>
-<div class="a" id="a">
-    <iframe id="b" class="b video_pc" src="https://www.bilibili.com/html/html5player.html?cid=24237876&aid=14875829&pre_ad=0" frameborder="0" allowfullscreen="true">
-    </iframe> 
-</div>
+    <div class="dc">
+        <div class="a" id="a">
+            <iframe id="b" class="b video_pc" src="https://www.bilibili.com/html/html5player.html?cid=24237876&aid=14875829&pre_ad=0" frameborder="0" allowfullscreen="true">
+            </iframe> 
+        </div>
+        <div class="lis" id="lis">
+            <ul id="oul">
+
+            </ul>
+        </div>
+    </div>
+
 
             
 
 <script>
     var a = document.getElementById("a");
     var b = document.getElementById("b");
+    var lis = document.getElementById("lis");
+    var oul = document.getElementById("oul");
     function ab (){
-        console.log(window.screen.width)
         if(a.offsetWidth>480){
-            console.log(1)
             b.style.width=a.offsetWidth+300+"px";
             b.style.height=a.offsetHeight+85+"px";
             b.style.top=-47+"px";
         }else{
-            console.log(2)
             b.style.width=100+"%";
-            b.style.height=b.offsetWidth*0.6+"px";  
+            b.style.height=b.offsetWidth*0.6+"px";
         }
     }
     ab();
+
+    
+    
+    var data = [
+                {"text":"第一节","cid":24764413,"aid":15211931},
+                {"text":"第二节","cid":24751345,"aid":15206666}
+                ];
+    for(var i=0;i<data.length;i++){
+        var oli = document.createElement("li");
+        oul.appendChild(oli);
+        var s = document.getElementsByTagName("li");
+        s[i].innerHTML=data[i].text;
+        s[i].setAttribute("index",i);
+        s[i].onclick=function(){
+            var j = this.getAttribute("index");
+            b.src = "https://www.bilibili.com/html/html5player.html?cid="+data[j].cid+"&aid="+data[j].aid+"&pre_ad=0"      
+        }
+    }
 </script> 
     
 </body>
